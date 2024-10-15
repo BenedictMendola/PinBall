@@ -2,8 +2,11 @@ import VectorMath
 import Vector3
 import Transform
 
+def printVector(vector: Vector3.Vector3):
+    print(vector.x,vector.y,vector.z)
 
-vect1 = Vector3.Vector3(-20,3,5)
+
+vect1 = Vector3.Vector3(14,3,5)
 vect2 = Vector3.Vector3(1,1,1)
 vect3 = Vector3.Vector3(1,1,1)
 transform1 = Transform.Transform(vect1,vect2,vect3)
@@ -17,6 +20,7 @@ transform1 = Transform.Transform(vect1,vect2,vect3)
 # print(vect3.getMagnitude())
 # print(vect3.getMagnitude() == 1)
 
-print(transform1.position.x,transform1.position.y,transform1.position.z)
-transform1.position = Vector3.Vector3(0,0,0)
-print(transform1.position.x,transform1.position.y,transform1.position.z)
+printVector(transform1.position)
+
+transform1.position = VectorMath.add(transform1.position,vect3)
+printVector(transform1.position)
