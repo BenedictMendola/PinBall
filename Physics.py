@@ -17,6 +17,7 @@ class RigidBody:
         self.velocity.z += (self.mass/force.z)
     def addGravity(self,gravity: float,deltaTime: float):
         self.velocity.y += deltaTime * gravity
+        #print("addedGrav: "+ str(deltaTime * gravity))
 
 
 def moveObjects(gameObjects,deltaTime):

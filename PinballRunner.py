@@ -9,10 +9,11 @@ import TimeTracker
 pygame.init()
 #screen = pygame.display.set_mode((600,800))
 timeTracker = TimeTracker.TimeTracker()
+timeTracker.deltaTime = .001
 running = True
 renderer = Renderer.Renderer((600,800))
-gravityScale = 1000
-
+gravityScale = 750
+gameTicks = 0
 #try to keep every object in order by z hight
 gameObjects = []
 
@@ -22,22 +23,23 @@ gameObjects = []
 #testCode
 
 
-testObject = GameObject.GameObject("Test Object 2",Vector3.Vector3(300,400,0),Vector3.Vector3(3,3,1),Vector3.Vector3(2,3,4))
-testObject.addRidgidBody(Vector3.Vector3(0,-600,0),0,10)
+testObject = GameObject.GameObject("Test Object 2",Vector3.Vector3(200,400,0),Vector3.Vector3(3,3,1),Vector3.Vector3(2,3,4))
+testObject.addRidgidBody(Vector3.Vector3(100,-600,0),0,10)
+testObject.addSpriteRenderer('Assets\RedCircle1.png')
+gameObjects.append(testObject)
+
+testObject = GameObject.GameObject("Test Object 3",Vector3.Vector3(100,400,0),Vector3.Vector3(3,3,1),Vector3.Vector3(2,3,4))
+testObject.addRidgidBody(Vector3.Vector3(200,-700,0),0,10)
 testObject.addSpriteRenderer('Assets\RedCircle1.png')
 gameObjects.append(testObject)
 
     
-
-
 #basic game loop, everything must run in this loop
 while running:
-    
+    gameTicks += 1
 
     #delete once game runs naturaly at reasoanple framerate
-    for i in range(500000):
-        pass
-
+    
 
 
     Physics.addGravityAll(gameObjects,timeTracker.deltaTime,gravityScale)
@@ -53,7 +55,7 @@ while running:
 
     # tracking fps, must be true end of loop
     timeTracker.updateTime()
-    print("FPS:" + str(timeTracker.fPS) + "     Deltatime:" + str(timeTracker.deltaTime))
+    #print(gameObjects[0].transform.position.y)
 
 
 pygame.quit()
