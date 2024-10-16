@@ -1,5 +1,6 @@
 import Vector3
 import Transform
+import SpriteRenderer
 
 
 #All things are gameobjects, and their components. 
@@ -10,6 +11,9 @@ class GameObject:
         self.name = name
         self.transform = Transform.Transform(position,scale,vectorAngle)
         self.spriteRender = None
+
+    def addSpriteRenderer(self,imagePath: str):
+        self.spriteRender = SpriteRenderer.SpriteRenderer(imagePath)
 
         
         
