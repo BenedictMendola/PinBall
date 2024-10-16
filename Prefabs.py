@@ -8,8 +8,13 @@ def makeRedCircle(startingPos: Vector3.Vector3, vectorAngle:Vector3.Vector3,init
     redCircle.addBoxCollider()
     return redCircle
 
-def makeBlueBox(startingPos: Vector3.Vector3,vectorAngle: Vector3.Vector3):
+def makeBlueBoxHoriz(startingPos: Vector3.Vector3,vectorAngle: Vector3.Vector3):
     colisionBox = GameObject.GameObject("Collison Box",startingPos,Vector3.Vector3(3,3,1),vectorAngle)
     colisionBox.addSpriteRenderer('Assets\Rectangle.png')
+    colisionBox.addBoxCollider()
+    return colisionBox
+def makeBlueBoxVert(startingPos: Vector3.Vector3,vectorAngle: Vector3.Vector3):
+    colisionBox = GameObject.GameObject("Collison Box",startingPos,Vector3.Vector3(3,3,1),vectorAngle)
+    colisionBox.addSpriteRenderer('Assets\Rectangle1.png')
     colisionBox.addBoxCollider()
     return colisionBox

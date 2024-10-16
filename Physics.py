@@ -1,6 +1,6 @@
 import Vector3
-import VectorMath
-
+import random
+import time
 
 class RigidBody:
     
@@ -56,7 +56,7 @@ def checkIfColliding(object1,object2):
     #print(f"Object 1:{x1,y1}    object 2 {x2,y2}")
 
     oneYOver = ((y1 - col1.yMax < y2 + col2.yMin) and (y1 + col1.yMin > y2 - col2.yMin))
-    oneXOver = (x1 - col1.xMax < x2 + col2.xMax) and (x1 - col1.xMax > x2 - col2.xMax)
+    oneXOver = (x1 - col1.xMax < x2 + col2.xMax) and (x1 + col1.xMax > x2 - col2.xMax)
 
     #makes sure that one but not both of the vertical sides of col 1 is greater than col 2
     #oneXOver = ((col1.xMax + x1 > col2.xMax + x2) and (col1.xMin + x1 < col2.xMax + x2) or (col1.xMin + x1 < col2.xMin + x2) and (col1.xMax + x1 > col2.xMin + x2))
@@ -75,11 +75,12 @@ def collison(gameObjects: list, o1 : int, o2: int):
     
     if(object1.ridgidbody != None):
         #determining which dir to canncel
-        if (object2.transform.position.y - object2.collider.yMax > object1.transform.position.y > object2.transform.position.y - object2.collider.yMax):
+        if (object2.transform.position.y + object2.collider.yMax > object1.transform.position.y > object2.transform.position.y - object2.collider.yMax):
             object1.ridgidbody.velocity.x = -object1.ridgidbody.velocity.x
+            print("this shouild work")
         else:
             object1.ridgidbody.velocity.y = -object1.ridgidbody.velocity.y
-
+    
         
         #object1.ridgidbody.velocity = VectorMath.mul(object1.ridgidbody.velocity,Vector3.Vector3(-1,-1,-1))
         
@@ -94,6 +95,8 @@ def checkAllCollisons(gameObjects):
             while(j < len(gameObjects)):
                 if((i != j and gameObjects[j].collider != None)and checkIfColliding(gameObjects[i],gameObjects[j])):
                     collison(gameObjects,i,j)
+                    i+=1
+                    print("bounce   "+ str(time.time()))
                 j+=1
 
         i+=1

@@ -1,6 +1,5 @@
 import pygame
 import Renderer
-import GameObject
 import Vector3
 import Physics
 import TimeTracker
@@ -26,15 +25,41 @@ gameObjects = []
 
 
 
-gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,400,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-600,0),0,10))
+gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,500,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
+gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,300,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
+gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,200,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
 
 
-    
-gameObjects.append(Prefabs.makeBlueBox(Vector3.Vector3(80,600,0),Vector3.Vector3(0,0,0)))
-gameObjects.append(Prefabs.makeBlueBox(Vector3.Vector3(230,600,0),Vector3.Vector3(0,0,0)))
-gameObjects.append(Prefabs.makeBlueBox(Vector3.Vector3(380,600,0),Vector3.Vector3(0,0,0)))
-gameObjects.append(Prefabs.makeBlueBox(Vector3.Vector3(530,600,0),Vector3.Vector3(0,0,0)))
-gameObjects.append(Prefabs.makeBlueBox(Vector3.Vector3(380,400,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(0,750,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(100,750,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(200,750,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(300,750,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(400,750,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(500,750,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(600,750,0),Vector3.Vector3(0,0,0)))
+
+
+
+
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,0,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,100,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,200,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,300,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,400,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,500,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,600,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(600,700,0),Vector3.Vector3(0,0,0)))
+
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,0,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,100,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,200,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,300,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,400,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,500,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,600,0),Vector3.Vector3(0,0,0)))
+gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,700,0),Vector3.Vector3(0,0,0)))
+
+
 #basic game loop, everything must run in this loop
 while running:
     gameTicks += 1
