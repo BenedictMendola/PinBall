@@ -1,6 +1,7 @@
 import Vector3
 import Transform
 import SpriteRenderer
+import Physics
 
 
 #All things are gameobjects, and their components. 
@@ -11,10 +12,13 @@ class GameObject:
         self.name = name
         self.transform = Transform.Transform(position,scale,vectorAngle)
         self.spriteRender = None
+        self.ridgidbody = None
 
     def addSpriteRenderer(self,imagePath: str):
         self.spriteRender = SpriteRenderer.SpriteRenderer(imagePath)
 
+    def addRidgidBody(self,velocity:float,angularV: float,mass: float):
+        self.ridgidbody = Physics.RigidBody(velocity,angularV,mass)
         
         
 
