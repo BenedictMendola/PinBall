@@ -12,3 +12,5 @@ class Vector3:
 
     def normalized(self):
         return Vector3(self.x/self.getMagnitude(),self.y/self.getMagnitude(),self.z/self.getMagnitude())
+    
+    
