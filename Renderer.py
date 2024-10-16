@@ -1,12 +1,12 @@
 import pygame
-import GameObject
+
 
 class Renderer:
 
     def __init__(self,screenSize: tuple):
         self.screenSize = screenSize
         self.screen = pygame.display.set_mode(screenSize)
-        self.backgroundColor = pygame.Color(0,255,0)
+        self.backgroundColor = pygame.Color(0,200,200)
     
     def renderFrame(self,objects: list):
        self.screen.fill(self.backgroundColor)
