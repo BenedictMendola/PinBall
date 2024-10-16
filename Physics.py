@@ -1,6 +1,5 @@
 import Vector3
-import random
-import time
+import VectorMath
 
 class RigidBody:
     
@@ -76,14 +75,22 @@ def collison(gameObjects: list, o1 : int, o2: int):
     if(object1.ridgidbody != None):
         #determining which dir to canncel
         if (object2.transform.position.y + object2.collider.yMax > object1.transform.position.y > object2.transform.position.y - object2.collider.yMax):
-            object1.ridgidbody.velocity.x = -object1.ridgidbody.velocity.x
+            object1.ridgidbody.velocity.x = -object1.ridgidbody.velocity.x 
             print("this shouild work")
         else:
-            object1.ridgidbody.velocity.y = -object1.ridgidbody.velocity.y
+            object1.ridgidbody.velocity.y = -object1.ridgidbody.velocity.y 
     
         
         #object1.ridgidbody.velocity = VectorMath.mul(object1.ridgidbody.velocity,Vector3.Vector3(-1,-1,-1))
-        
+
+
+def drag(gameObjects):
+    for object in gameObjects:
+        if(object.ridgidbody != None):
+            if (object.ridgidbody.velocity.getMagnitude() > 1000):
+                object.ridgidbody.velocity = VectorMath.mul(object.ridgidbody.velocity, Vector3.Vector3(.99,.99,.99))
+
+
 
 def checkAllCollisons(gameObjects):
 
@@ -96,7 +103,9 @@ def checkAllCollisons(gameObjects):
                 if((i != j and gameObjects[j].collider != None)and checkIfColliding(gameObjects[i],gameObjects[j])):
                     collison(gameObjects,i,j)
                     i+=1
-                    print("bounce   "+ str(time.time()))
+                    if(i == len(gameObjects)):
+                        break
+                    
                 j+=1
 
         i+=1

@@ -14,20 +14,20 @@ running = True
 renderer = Renderer.Renderer((600,800))
 gravityScale = 750
 gameTicks = 0
+
 #try to keep every object in order by z hight
 gameObjects = []
 
 
 
 
-#testCode
+
+
 
 
 
 
 gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,500,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
-gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,300,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
-gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,200,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
 
 
 gameObjects.append(Prefabs.makeBlueBoxHoriz(Vector3.Vector3(0,750,0),Vector3.Vector3(0,0,0)))
@@ -59,15 +59,22 @@ gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,500,0),Vector3.Vect
 gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,600,0),Vector3.Vector3(0,0,0)))
 gameObjects.append(Prefabs.makeBlueBoxVert(Vector3.Vector3(0,700,0),Vector3.Vector3(0,0,0)))
 
+spacePressed = False
+
 
 #basic game loop, everything must run in this loop
 while running:
     gameTicks += 1
 
+    if(pygame.key.get_pressed()[pygame.K_SPACE]):
+        if(not spacePressed):
+            spacePressed = True
+            gameObjects.append(Prefabs.makeRedCircle(Vector3.Vector3(200,500,0),Vector3.Vector3(1,1,1),Vector3.Vector3(100,-400,0),0,10))
+    else:
+        spacePressed = False
 
 
-
-
+    Physics.drag(gameObjects)
     Physics.addGravityAll(gameObjects,timeTracker.deltaTime,gravityScale)
     Physics.checkAllCollisons(gameObjects)
     Physics.moveObjects(gameObjects,timeTracker.deltaTime)
