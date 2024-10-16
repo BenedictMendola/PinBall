@@ -1,4 +1,5 @@
 import pygame
+import GameObject
 
 class Renderer:
 
@@ -9,4 +10,21 @@ class Renderer:
     
     def renderFrame(self,objects: list):
        self.screen.fill(self.backgroundColor)
+
+       for object in objects:
+            if(object.spriteRender != None):
+                objectSurface = object.spriteRender.surface
+                objectSurface = pygame.transform.scale(objectSurface,\
+                                                       (objectSurface.get_width() * object.transform.scale.x,\
+                                                        objectSurface.get_height() *object.transform.scale.y))
+
+                #this is the topright conner of the sprite, subtract half the hight and width
+                xPlacement = object.transform.position.x - objectSurface.get_width()/2
+                yPlacement = object.transform.position.y - objectSurface.get_height()/2
+
+                self.screen.blit(objectSurface,(xPlacement,yPlacement))
+               
+
+
+
        pygame.display.flip()
